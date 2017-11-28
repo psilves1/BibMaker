@@ -131,25 +131,25 @@ def apaWebsitePlaceFunction():
     URLLabel.place(x=15, y=200)
     URLEntry.place(x=105, y=200)
 
-def chicagoWebsitePlaceFunction():
-    articleTitleLabel.place(x=15, y=125)
-    articleEntry.place(x=105, y=125)
-    authorLabel.place(x=15, y=150)
-    authorFirstEntry.place(x=105, y=150)
-    authorMiddleEntry.place(x=255, y=150)
-    authorLastEntry.place(x=290, y=150)
-    websiteTitleLabel.place(x=15, y=175)
-    websiteTitleEntry.place(x=105, y=175)
-    pDateLabel.place(x=15, y=200)
-    pmonthEntry.place(x=105, y=200)
-    pdayEntry.place(x=255, y=200)
-    pyearEntry.place(x=290, y=200)
-    aDateLabel.place(x=15, y=250)
-    amonthEntry.place(x=105, y=225)
-    adayEntry.place(x=255, y=225)
-    ayearEntry.place(x=290, y=225)
-    URLLabel.place(x=15, y=250)
-    URLEntry.place(x=105, y=250)
+# def chicagoWebsitePlaceFunction():
+#     articleTitleLabel.place(x=15, y=125)
+#     articleEntry.place(x=105, y=125)
+#     authorLabel.place(x=15, y=150)
+#     authorFirstEntry.place(x=105, y=150)
+#     authorMiddleEntry.place(x=255, y=150)
+#     authorLastEntry.place(x=290, y=150)
+#     websiteTitleLabel.place(x=15, y=175)
+#     websiteTitleEntry.place(x=105, y=175)
+#     pDateLabel.place(x=15, y=200)
+#     pmonthEntry.place(x=105, y=200)
+#     pdayEntry.place(x=255, y=200)
+#     pyearEntry.place(x=290, y=200)
+#     aDateLabel.place(x=15, y=250)
+#     amonthEntry.place(x=105, y=225)
+#     adayEntry.place(x=255, y=225)
+#     ayearEntry.place(x=290, y=225)
+#     URLLabel.place(x=15, y=250)
+#     URLEntry.place(x=105, y=250)
 
 
 
@@ -183,19 +183,19 @@ def apaBookPlaceFunction():
     statelocationLabel.place(x=15, y=250)
     statelocationEntry.place(x=105, y = 250)
 
-def chicagoBookPlaceFunction():
-    bookTitleLabel.place(x=15, y=125)
-    bookEntry.place(x=105, y=125)
-    authorLabel.place(x=15, y=150)
-    authorFirstEntry.place(x=105, y=150)
-    authorMiddleEntry.place(x=255, y=150)
-    authorLastEntry.place(x=290, y=150)
-    blocationLabel.place(x=15, y=175)
-    blocationEntry.place(x=105, y=175)
-    publisherLabel.place(x=15, y=200)
-    publisherEntry.place(x=105, y=200)
-    mlabookpyearLabel.place(x=15, y=225)
-    mlabookpyearEntry.place(x=105, y=225)
+# def chicagoBookPlaceFunction():
+#     bookTitleLabel.place(x=15, y=125)
+#     bookEntry.place(x=105, y=125)
+#     authorLabel.place(x=15, y=150)
+#     authorFirstEntry.place(x=105, y=150)
+#     authorMiddleEntry.place(x=255, y=150)
+#     authorLastEntry.place(x=290, y=150)
+#     blocationLabel.place(x=15, y=175)
+#     blocationEntry.place(x=105, y=175)
+#     publisherLabel.place(x=15, y=200)
+#     publisherEntry.place(x=105, y=200)
+#     mlabookpyearLabel.place(x=15, y=225)
+#     mlabookpyearEntry.place(x=105, y=225)
 
 
 
@@ -227,19 +227,19 @@ def apaButtonFunction(event):
     else:
         print("An Error Occurred")
 
-def chicagoButtonFunction(event):
-    bibFormat.configure(text = "Chicago")
-    clearFunction()
-    if(typeFormat.cget('text') == "Website"):
-        chicagoWebsitePlaceFunction()
-    elif(typeFormat.cget("text") == "Book"):
-        chicagoBookPlaceFunction()
-    elif(typeFormat.cget("text") == "Video"):
-        pass
-    elif(typeFormat.cget('text') == "Journal"):
-        pass
-    else:
-        print("An Error Occurred")
+# def chicagoButtonFunction(event):
+#     bibFormat.configure(text = "Chicago")
+#     clearFunction()
+#     if(typeFormat.cget('text') == "Website"):
+#         chicagoWebsitePlaceFunction()
+#     elif(typeFormat.cget("text") == "Book"):
+#         chicagoBookPlaceFunction()
+#     elif(typeFormat.cget("text") == "Video"):
+#         pass
+#     elif(typeFormat.cget('text') == "Journal"):
+#         pass
+#     else:
+#         print("An Error Occurred")
 
 
 
@@ -252,8 +252,8 @@ def websiteButtonFunction(event):
         mlaWebsitePlaceFunction()
     elif(bibFormat.cget('text') == "APA"):
         apaWebsitePlaceFunction()
-    elif(bibFormat.cget('text') == "Chicago"):
-        chicagoWebsitePlaceFunction()
+    # elif(bibFormat.cget('text') == "Chicago"):
+    #     chicagoWebsitePlaceFunction()
     else:
         print("An Error Occurred")
 
@@ -264,34 +264,34 @@ def bookButtonFunction(event):
         mlaBookPlaceFunction()
     elif(bibFormat.cget('text') == "APA"):
         apaBookPlaceFunction()
-    elif(bibFormat.cget('text') == "Chicago"):
-        chicagoBookPlaceFunction()
+    # elif(bibFormat.cget('text') == "Chicago"):
+    #     chicagoBookPlaceFunction()
     else:
         print("An Error Occurred")
 
-def videoButtonFunction(event):
-    typeFormat.configure(text = "Video")
-    clearFunction()
-    if (bibFormat.cget('text') == "MLA8"):
-        pass
-    elif (bibFormat.cget('text') == "APA"):
-        pass
-    elif (bibFormat.cget('text') == "Chicago"):
-        pass
-    else:
-        print("An Error Occurred")
-
-def journalButtonFunction(event):
-    typeFormat.configure(text = "Journal")
-    clearFunction()
-    if (bibFormat.cget('text') == "MLA8"):
-        pass
-    elif (bibFormat.cget('text') == "APA"):
-        pass
-    elif (bibFormat.cget('text') == "Chicago"):
-        pass
-    else:
-        print("An Error Occurred")
+# def videoButtonFunction(event):
+#     typeFormat.configure(text = "Video")
+#     clearFunction()
+#     if (bibFormat.cget('text') == "MLA8"):
+#         pass
+#     elif (bibFormat.cget('text') == "APA"):
+#         pass
+#     elif (bibFormat.cget('text') == "Chicago"):
+#         pass
+#     else:
+#         print("An Error Occurred")
+#
+# def journalButtonFunction(event):
+#     typeFormat.configure(text = "Journal")
+#     clearFunction()
+#     if (bibFormat.cget('text') == "MLA8"):
+#         pass
+#     elif (bibFormat.cget('text') == "APA"):
+#         pass
+#     elif (bibFormat.cget('text') == "Chicago"):
+#         pass
+#     else:
+#         print("An Error Occurred")
 
 
 
