@@ -56,6 +56,7 @@ def clearFunction():
     #Article
     articleTitleLabel.place_forget()
     articleEntry.place_forget()
+    articleEntry.setvar('text')
     #Author
     authorLabel.place_forget()
     authorFirstEntry.place_forget()
@@ -641,6 +642,19 @@ citeButton.place(x = 15, y =350)
 
 def citeButtonFunction(event):
     print ("Cite it")
+
+    clearFunction()
+
+    if(bibFormat.cget('text') == "MLA8"):
+        if(typeFormat.cget('text') == "Website"):
+            mlaWebsitePlaceFunction()
+        else:
+            mlaBookPlaceFunction()
+    elif(bibFormat.cget('text') == "APA"):
+        if(typeFormat.cget('text') == "Website"):
+            apaWebsitePlaceFunction()
+        else:
+            apaBookPlaceFunction()
 
 citeButton.bind('<Button-1>', citeButtonFunction)
 
