@@ -1,7 +1,5 @@
 from tkinter import *
 
-#test
-
 master = Tk()
 
 master.geometry("800x500")#Sets shape of GUI
@@ -21,8 +19,8 @@ mlaButton.place(x = 15, y = 35)
 apaButton = Button(master, text = "APA")
 apaButton.place(x = 65, y = 35)
 
-chicagoButton = Button(master, text = "Chicago")
-chicagoButton.place(x=105, y = 35)
+#chicagoButton = Button(master, text = "Chicago")
+#chicagoButton.place(x=105, y = 35)
 
 bibSaying = Label(master, text = "Type of Bibliography: ")
 bibSaying.place(x=15, y=70)
@@ -39,11 +37,11 @@ websiteButton.place(x = 300, y = 35)
 bookButton = Button(master, text = "Book")
 bookButton.place(x = 360, y = 35)
 
-videoButton = Button(master, text = "Video")
-videoButton.place(x = 404, y = 35)
+#videoButton = Button(master, text = "Video")
+#videoButton.place(x = 404, y = 35)
 
-journalButton = Button(master, text = "Journal")
-journalButton.place(x = 450, y = 35)
+#journalButton = Button(master, text = "Journal")
+#journalButton.place(x = 450, y = 35)
 
 typeSaying = Label(master, text = "Type of Format: ")
 typeSaying.place(x = 300, y = 70)
@@ -71,7 +69,6 @@ def clearFunction():
     #URL
     URLLabel.place_forget()
     URLEntry.place_forget()
-    URLCheckBox.place_forget()
     #Publisher Date
     pDateLabel.place_forget()
     pmonthEntry.place_forget()
@@ -118,7 +115,7 @@ def mlaWebsitePlaceFunction():
     ayearEntry.place(x=290, y=250)
     URLLabel.place(x=15, y=275)
     URLEntry.place(x=105, y=275)
-    URLCheckBox.place(x=535, y=275)
+
 
 def apaWebsitePlaceFunction():
     articleTitleLabel.place(x=15, y=125)
@@ -301,13 +298,13 @@ def journalButtonFunction(event):
 #Format Binds
 mlaButton.bind('<Button-1>', mlaButtonFunction)
 apaButton.bind('<Button-1>', apaButtonFunction)
-chicagoButton.bind('<Button-1>', chicagoButtonFunction)
+#chicagoButton.bind('<Button-1>', chicagoButtonFunction)
 
 #Type Binds
 websiteButton.bind('<Button-1>', websiteButtonFunction)
 bookButton.bind('<Button-1>', bookButtonFunction)
-videoButton.bind('<Button-1>', videoButtonFunction)
-journalButton.bind('<Button-1>', journalButtonFunction)
+#videoButton.bind('<Button-1>', videoButtonFunction)
+#journalButton.bind('<Button-1>', journalButtonFunction)
 
 #ENTRY CODE FOR MLA WEBSITE
 
@@ -556,7 +553,6 @@ def URLOnFocusOut(event):
 URLEntry.bind('<FocusIn>', URLOnEntryClick)
 URLEntry.bind('<FocusOut>', URLOnFocusOut)
 
-URLCheckBox = Checkbutton(master, text="Include URL?")
 
 
 #bibFormat and typeFormat
