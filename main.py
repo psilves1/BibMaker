@@ -106,7 +106,7 @@ def clearFunction():
     clearLastWidget()
 
 
-def clearLastWidget():
+def clearLastWidget(): #Clears the widget the cursor is in. In Python it is called the Focus
     try:
         e = master.focus_get()
         e.delete(0, END)
