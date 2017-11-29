@@ -15,7 +15,9 @@ def clearFunction():
     #Article
     articleTitleLabel.place_forget()
     articleEntry.place_forget()
-    articleEntry.setvar('text')
+    articleEntry.delete(0, END)
+    articleEntry.insert(0, "Article Title")
+    articleEntry.configure(fg = "grey")
     #Author
     authorLabel.place_forget()
     authorFirstEntry.place_forget()
@@ -51,6 +53,12 @@ def clearFunction():
     #Book Location State
     statelocationEntry.place_forget()
     statelocationLabel.place_forget()
+    clearLastWidget()
+
+
+def clearLastWidget():
+    e = master.focus_get()
+    e.delete(0, END)
 
 #Place Functions___________________________________________________________________________________________________________
 
@@ -704,12 +712,6 @@ citeButton.bind('<Button-1>', citeButtonFunction)
 
 mlaWebsitePlaceFunction()
 master.mainloop()
-
-
-
-
-
-
 
 
 
