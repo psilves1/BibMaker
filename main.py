@@ -21,38 +21,87 @@ def clearFunction():
     #Author
     authorLabel.place_forget()
     authorFirstEntry.place_forget()
+    authorFirstEntry.delete(0, END)
+    authorFirstEntry.insert(0, "First name")
+    authorFirstEntry.configure(fg = "grey")
     authorMiddleEntry.place_forget()
+    authorMiddleEntry.delete(0, END)
+    authorMiddleEntry.insert(0, "M.I.")
+    authorMiddleEntry.configure(fg = "grey")
     authorLastEntry.place_forget()
+    authorLastEntry.delete(0, END)
+    authorLastEntry.insert(0, "Last name")
+    authorLastEntry.configure(fg = "grey")
+    #Website
     websiteTitleLabel.place_forget()
     websiteTitleEntry.place_forget()
+    websiteTitleEntry.delete(0, END)
+    websiteTitleEntry.insert(0, 'Website Title')
+    websiteTitleEntry.configure(fg = "grey")
     #Publisher
     publisherLabel.place_forget()
     publisherEntry.place_forget()
+    publisherEntry.delete(0, END)
+    publisherEntry.insert(0, "Publisher")
+    publisherEntry
     #URL
     URLLabel.place_forget()
     URLEntry.place_forget()
+    URLEntry.delete(0, END)
+    URLEntry.insert(0, "URL")
+    URLEntry
     #Publisher Date
     pDateLabel.place_forget()
     pmonthEntry.place_forget()
+    pmonthEntry.delete(0, END)
+    pmonthEntry.insert(0, "Month")
+    pmonthEntry
     pdayEntry.place_forget()
+    pdayEntry.delete(0, END)
+    pdayEntry.insert(0, "Day")
+    pdayEntry
     pyearEntry.place_forget()
+    pyearEntry.delete(0, END)
+    pyearEntry.insert(0, "Year")
+    pyearEntry
     #Accessed Date
     aDateLabel.place_forget()
     amonthEntry.place_forget()
+    amonthEntry.delete(0, END)
+    amonthEntry.insert(0, "Month")
+    amonthEntry
     adayEntry.place_forget()
+    adayEntry.delete(0, END)
+    adayEntry.insert(0, "Day")
+    adayEntry
     ayearEntry.place_forget()
+    ayearEntry.delete(0, END)
+    ayearEntry.insert(0, "Year")
+    ayearEntry
     #Book Title
     bookTitleLabel.place_forget()
     bookEntry.place_forget()
+    bookEntry.delete(0, END)
+    bookEntry.insert(0, "Book Title")
+    bookEntry
     #Book Location City
     blocationLabel.place_forget()
     blocationEntry.place_forget()
+    blocationEntry.delete(0, END)
+    blocationEntry.insert(0, "City the book was published in")
+    blocationEntry
     #MLA Book Year
     mlabookpyearLabel.place_forget()
     mlabookpyearEntry.place_forget()
+    mlabookpyearEntry.delete(0, END)
+    mlabookpyearEntry.insert(0, "Year")
+    mlabookpyearEntry
     #Book Location State
     statelocationEntry.place_forget()
     statelocationLabel.place_forget()
+    statelocationEntry.delete(0, END)
+    statelocationEntry.insert(0, "State the book was published in")
+    statelocationEntry
 
     clearLastWidget()
 
@@ -61,6 +110,7 @@ def clearLastWidget():
     try:
         e = master.focus_get()
         e.delete(0, END)
+        e.configure(fg = "black")
     except AttributeError:#This error will occur if the user hits "Cite it" wihtout having a widget selected
         pass
 
