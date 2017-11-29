@@ -4,7 +4,7 @@ master = Tk()
 
 master.geometry("800x500")#Sets shape of GUI
 master.title("Bibliography Maker Pre-Development") #Title
-master.iconbitmap("Apple.ico")
+master.iconbitmap("Apple.ico")#Icon Picture
 
 #Gap between the entry widgets is 25 pixels
 
@@ -25,8 +25,8 @@ apaButton.place(x = 65, y = 35)
 bibSaying = Label(master, text = "Type of Bibliography: ")
 bibSaying.place(x=15, y=70)
 
-bibFormat = Label(master, text="MLA8")
-bibFormat.place(x= 135, y=70)
+bibType = Label(master, text="MLA8")
+bibType.place(x= 135, y=70)
 
 questionForBibType = Label(master, text = "What type of bibliography do you want to make? ")
 questionForBibType.place(x = 300, y = 10)
@@ -49,9 +49,9 @@ typeSaying.place(x = 300, y = 70)
 typeFormat = Label(master, text = "Website")
 typeFormat.place(x = 390, y = 70)#Check if this is a good value for x
 
-#Format Functions
-#Will need to add more funcionality to these functions
-""""ADD EVERY SINGLE WIDGET TO THE CLEAR FUNCTION!!!!!"""
+
+#Functions
+
 def clearFunction():
     #Article
     articleTitleLabel.place_forget()
@@ -93,8 +93,9 @@ def clearFunction():
     statelocationEntry.place_forget()
     statelocationLabel.place_forget()
 
+#Place Functions
 
-
+#Website Place Functions
 def mlaWebsitePlaceFunction():
     articleTitleLabel.place(x=15, y=125)
     articleEntry.place(x=105, y=125)
@@ -116,7 +117,6 @@ def mlaWebsitePlaceFunction():
     ayearEntry.place(x=290, y=250)
     URLLabel.place(x=15, y=275)
     URLEntry.place(x=105, y=275)
-
 
 def apaWebsitePlaceFunction():
     articleTitleLabel.place(x=15, y=125)
@@ -152,8 +152,7 @@ def apaWebsitePlaceFunction():
 #     URLLabel.place(x=15, y=250)
 #     URLEntry.place(x=105, y=250)
 
-
-
+#Book Place Functions
 def mlaBookPlaceFunction():
     bookTitleLabel.place(x=15, y=125)
     bookEntry.place(x=105, y=125)
@@ -199,9 +198,9 @@ def apaBookPlaceFunction():
 #     mlabookpyearEntry.place(x=105, y=225)
 
 
-
+#Button Functions
 def mlaButtonFunction(event):
-    bibFormat.configure(text = "MLA8")
+    bibType.configure(text = "MLA8")
     clearFunction()
     if(typeFormat.cget('text') == "Website"):
         mlaWebsitePlaceFunction()
@@ -215,7 +214,7 @@ def mlaButtonFunction(event):
         print("An Error Occurred")
 
 def apaButtonFunction(event):
-    bibFormat.configure(text = "APA")
+    bibType.configure(text = "APA")
     clearFunction()
     if(typeFormat.cget('text') == "Website"):
         apaWebsitePlaceFunction()
@@ -229,7 +228,7 @@ def apaButtonFunction(event):
         print("An Error Occurred")
 
 # def chicagoButtonFunction(event):
-#     bibFormat.configure(text = "Chicago")
+#     bibType.configure(text = "Chicago")
 #     clearFunction()
 #     if(typeFormat.cget('text') == "Website"):
 #         chicagoWebsitePlaceFunction()
@@ -246,14 +245,15 @@ def apaButtonFunction(event):
 
 #Type Functions
 #Will need to add more funcionality to these functions
+
 def websiteButtonFunction(event):
     typeFormat.configure(text = "Website")
     clearFunction()
-    if(bibFormat.cget('text') == "MLA8"):
+    if(bibType.cget('text') == "MLA8"):
         mlaWebsitePlaceFunction()
-    elif(bibFormat.cget('text') == "APA"):
+    elif(bibType.cget('text') == "APA"):
         apaWebsitePlaceFunction()
-    # elif(bibFormat.cget('text') == "Chicago"):
+    # elif(bibType.cget('text') == "Chicago"):
     #     chicagoWebsitePlaceFunction()
     else:
         print("An Error Occurred")
@@ -261,11 +261,11 @@ def websiteButtonFunction(event):
 def bookButtonFunction(event):
     typeFormat.configure(text = "Book")
     clearFunction()
-    if(bibFormat.cget("text") == "MLA8"):
+    if(bibType.cget("text") == "MLA8"):
         mlaBookPlaceFunction()
-    elif(bibFormat.cget('text') == "APA"):
+    elif(bibType.cget('text') == "APA"):
         apaBookPlaceFunction()
-    # elif(bibFormat.cget('text') == "Chicago"):
+    # elif(bibType.cget('text') == "Chicago"):
     #     chicagoBookPlaceFunction()
     else:
         print("An Error Occurred")
@@ -273,11 +273,11 @@ def bookButtonFunction(event):
 # def videoButtonFunction(event):
 #     typeFormat.configure(text = "Video")
 #     clearFunction()
-#     if (bibFormat.cget('text') == "MLA8"):
+#     if (bibType.cget('text') == "MLA8"):
 #         pass
-#     elif (bibFormat.cget('text') == "APA"):
+#     elif (bibType.cget('text') == "APA"):
 #         pass
-#     elif (bibFormat.cget('text') == "Chicago"):
+#     elif (bibType.cget('text') == "Chicago"):
 #         pass
 #     else:
 #         print("An Error Occurred")
@@ -285,11 +285,11 @@ def bookButtonFunction(event):
 # def journalButtonFunction(event):
 #     typeFormat.configure(text = "Journal")
 #     clearFunction()
-#     if (bibFormat.cget('text') == "MLA8"):
+#     if (bibType.cget('text') == "MLA8"):
 #         pass
-#     elif (bibFormat.cget('text') == "APA"):
+#     elif (bibType.cget('text') == "APA"):
 #         pass
-#     elif (bibFormat.cget('text') == "Chicago"):
+#     elif (bibType.cget('text') == "Chicago"):
 #         pass
 #     else:
 #         print("An Error Occurred")
@@ -297,6 +297,209 @@ def bookButtonFunction(event):
 
 
 #Format Binds
+
+#Bind Functions
+
+def articleOnEntryClick(event):
+    if articleEntry.get() == 'Article Title':
+       articleEntry.delete(0, "end") # delete all the text in the entry
+       articleEntry.insert(0, '') #Insert blank for user input
+       articleEntry.config(fg = 'black')
+def articleOnFocusOut(event):
+    if articleEntry.get() == '':
+        articleEntry.insert(0, 'Article Title')
+        articleEntry.config(fg = 'grey')
+
+def authorFirstOnEntryClick(event):
+    if authorFirstEntry.get() == 'First Name':
+       authorFirstEntry.delete(0, "end") # delete all the text in the entry
+       authorFirstEntry.insert(0, '') #Insert blank for user input
+       authorFirstEntry.config(fg = 'black')
+def authorFirstOnFocusOut(event):
+    if authorFirstEntry.get() == '':
+        authorFirstEntry.insert(0, 'First Name')
+        authorFirstEntry.config(fg = 'grey')
+
+def authorMiddleOnEntryClick(event):
+    if authorMiddleEntry.get() == 'M.I.':
+       authorMiddleEntry.delete(0, "end") # delete all the text in the entry
+       authorMiddleEntry.insert(0, '') #Insert blank for user input
+       authorMiddleEntry.config(fg = 'black')
+def authorMiddleOnFocusOut(event):
+    if authorMiddleEntry.get() == '':
+        authorMiddleEntry.insert(0, 'M.I.')
+        authorMiddleEntry.config(fg = 'grey')
+
+def authorLastOnEntryClick(event):
+    if authorLastEntry.get() == 'Last Name':
+       authorLastEntry.delete(0, "end") # delete all the text in the entry
+       authorLastEntry.insert(0, '') #Insert blank for user input
+       authorLastEntry.config(fg = 'black')
+def authorLastOnFocusOut(event):
+    if authorLastEntry.get() == '':
+        authorLastEntry.insert(0, 'Last Name')
+        authorLastEntry.config(fg = 'grey')
+
+def websiteTitleOnEntryClick(event):
+    if websiteTitleEntry.get() == 'Website Title':
+        websiteTitleEntry.delete(0, "end") # delete all the text in the entry
+        websiteTitleEntry.insert(0, '') #Insert blank for user input
+        websiteTitleEntry.config(fg = 'black')
+def websiteTitleOnFocusOut(event):
+    if websiteTitleEntry.get() == '':
+        websiteTitleEntry.insert(0, 'Website Title')
+        websiteTitleEntry.config(fg = 'grey')
+
+def authorLastOnEntryClick(event):
+    if authorLastEntry.get() == 'Last Name':
+       authorLastEntry.delete(0, "end") # delete all the text in the entry
+       authorLastEntry.insert(0, '') #Insert blank for user input
+       authorLastEntry.config(fg = 'black')
+def authorLastOnFocusOut(event):
+    if authorLastEntry.get() == '':
+        authorLastEntry.insert(0, 'Last Name')
+        authorLastEntry.config(fg = 'grey')
+
+def publisherOnEntryClick(event):
+    if publisherEntry.get() == 'Publisher':
+        publisherEntry.delete(0, "end") # delete all the text in the entry
+        publisherEntry.insert(0, '') #Insert blank for user input
+        publisherEntry.config(fg = 'black')
+def publisherOnFocusOut(event):
+    if publisherEntry.get() == '':
+        publisherEntry.insert(0, 'Publisher')
+        publisherEntry.config(fg = 'grey')
+
+def pmonthOnEntryClick(event):
+    if pmonthEntry.get() == 'Month':
+       pmonthEntry.delete(0, "end") # delete all the text in the entry
+       pmonthEntry.insert(0, '') #Insert blank for user input
+       pmonthEntry.config(fg = 'black')
+def pmonthOnFocusOut(event):
+    if pmonthEntry.get() == '':
+        pmonthEntry.insert(0, 'Month')
+        pmonthEntry.config(fg = 'grey')
+
+def pdayOnEntryClick(event):
+    if pdayEntry.get() == 'Day':
+       pdayEntry.delete(0, "end") # delete all the text in the entry
+       pdayEntry.insert(0, '') #Insert blank for user input
+       pdayEntry.config(fg = 'black')
+def pdayOnFocusOut(event):
+    if pdayEntry.get() == '':
+        pdayEntry.insert(0, 'Day')
+        pdayEntry.config(fg = 'grey')
+
+def pyearOnEntryClick(event):
+    if pyearEntry.get() == 'Year':
+       pyearEntry.delete(0, "end") # delete all the text in the entry
+       pyearEntry.insert(0, '') #Insert blank for user input
+       pyearEntry.config(fg = 'black')
+def pyearOnFocusOut(event):
+    if pyearEntry.get() == '':
+        pyearEntry.insert(0, 'Year')
+        pyearEntry.config(fg = 'grey')
+
+def amonthOnEntryClick(event):
+    if amonthEntry.get() == 'Month':
+       amonthEntry.delete(0, "end") # delete all the text in the entry
+       amonthEntry.insert(0, '') #Insert blank for user input
+       amonthEntry.config(fg = 'black')
+def amonthOnFocusOut(event):
+    if amonthEntry.get() == '':
+        amonthEntry.insert(0, 'Month')
+        amonthEntry.config(fg = 'grey')
+
+def adayOnEntryClick(event):
+    if adayEntry.get() == 'Day':
+       adayEntry.delete(0, "end") # delete all the text in the entry
+       adayEntry.insert(0, '') #Insert blank for user input
+       adayEntry.config(fg = 'black')
+def adayOnFocusOut(event):
+    if adayEntry.get() == '':
+        adayEntry.insert(0, 'Day')
+        adayEntry.config(fg = 'grey')
+
+def ayearOnEntryClick(event):
+    if ayearEntry.get() == 'Year':
+       ayearEntry.delete(0, "end") # delete all the text in the entry
+       ayearEntry.insert(0, '') #Insert blank for user input
+       ayearEntry.config(fg = 'black')
+def ayearOnFocusOut(event):
+    if ayearEntry.get() == '':
+        ayearEntry.insert(0, 'Year')
+        ayearEntry.config(fg = 'grey')
+
+def URLOnEntryClick(event):
+    if URLEntry.get() == 'URL':
+        URLEntry.delete(0, "end") # delete all the text in the entry
+        URLEntry.insert(0, '') #Insert blank for user input
+        URLEntry.config(fg = 'black')
+def URLOnFocusOut(event):
+    if URLEntry.get() == '':
+        URLEntry.insert(0, 'URL')
+        URLEntry.config(fg = 'grey')
+
+def bookOnEntryClick(event):
+    if bookEntry.get() == 'Book Title':
+       bookEntry.delete(0, "end") # delete all the text in the entry
+       bookEntry.insert(0, '') #Insert blank for user input
+       bookEntry.config(fg = 'black')
+def bookOnFocusOut(event):
+    if bookEntry.get() == '':
+        bookEntry.insert(0, 'Book Title')
+        bookEntry.config(fg = 'grey')
+
+def blocationOnEntryClick(event):
+    if blocationEntry.get() == 'City the book was published in':
+       blocationEntry.delete(0, "end") # delete all the text in the entry
+       blocationEntry.insert(0, '') #Insert blank for user input
+       blocationEntry.config(fg = 'black')
+def blocationOnFocusOut(event):
+    if blocationEntry.get() == '':
+        blocationEntry.insert(0, 'City the book was published in')
+        blocationEntry.config(fg = 'grey')
+
+def mlabookpyearOnEntryClick(event):
+    if mlabookpyearEntry.get() == 'Year':
+       mlabookpyearEntry.delete(0, "end") # delete all the text in the entry
+       mlabookpyearEntry.insert(0, '') #Insert blank for user input
+       mlabookpyearEntry.config(fg = 'black')
+def mlabookpyearOnFocusOut(event):
+    if mlabookpyearEntry.get() == '':
+        mlabookpyearEntry.insert(0, 'Year')
+        mlabookpyearEntry.config(fg = 'grey')
+
+def statelocationOnEntryClick(event):
+    if statelocationEntry.get() == 'State the book was published in':
+       statelocationEntry.delete(0, "end") # delete all the text in the entry
+       statelocationEntry.insert(0, '') #Insert blank for user input
+       statelocationEntry.config(fg = 'black')
+def statelocationOnFocusOut(event):
+    if statelocationEntry.get() == '':
+        statelocationEntry.insert(0, 'State the book was published in')
+        statelocationEntry.config(fg = 'grey')
+
+def citeButtonFunction(event):
+    print ("Cite it")
+
+    clearFunction()
+
+    if(bibType.cget('text') == "MLA8"):
+        if(typeFormat.cget('text') == "Website"):
+            mlaWebsitePlaceFunction()
+        else:
+            mlaBookPlaceFunction()
+    elif(bibType.cget('text') == "APA"):
+        if(typeFormat.cget('text') == "Website"):
+            apaWebsitePlaceFunction()
+        else:
+            apaBookPlaceFunction()
+
+
+
+
+
 mlaButton.bind('<Button-1>', mlaButtonFunction)
 apaButton.bind('<Button-1>', apaButtonFunction)
 #chicagoButton.bind('<Button-1>', chicagoButtonFunction)
@@ -309,353 +512,182 @@ bookButton.bind('<Button-1>', bookButtonFunction)
 
 #ENTRY CODE FOR MLA WEBSITE
 
-#Article Entry Code
+#Article Entry Code________________________________________________________________________________________________________
 articleTitleLabel = Label(master, text = "Article Title: ")
 articleTextVar = StringVar()
 articleTextVar.set("Article Title")
 articleEntry = Entry(master, textvariable=articleTextVar, fg = "grey", width = 70)
-
-def articleOnEntryClick(event):
-    if articleEntry.get() == 'Article Title':
-       articleEntry.delete(0, "end") # delete all the text in the entry
-       articleEntry.insert(0, '') #Insert blank for user input
-       articleEntry.config(fg = 'black')
-def articleOnFocusOut(event):
-    if articleEntry.get() == '':
-        articleEntry.insert(0, 'Article Title')
-        articleEntry.config(fg = 'grey')
-
+#Binds
 articleEntry.bind('<FocusIn>', articleOnEntryClick)
 articleEntry.bind('<FocusOut>', articleOnFocusOut)
 
-#Author Entry Code
-#First Name
+
+
+#Author Entry Code_________________________________________________________________________________________________________
+
+#First Name________________________________________________________________________________________________________________
 authorLabel = Label(master, text = "Author:")
 authorFirstTextVar = StringVar()
 authorFirstTextVar.set("First Name")
 authorFirstEntry = Entry(master, textvariable=authorFirstTextVar, fg = 'grey', width = 24)
-
-def authorFirstOnEntryClick(event):
-    if authorFirstEntry.get() == 'First Name':
-       authorFirstEntry.delete(0, "end") # delete all the text in the entry
-       authorFirstEntry.insert(0, '') #Insert blank for user input
-       authorFirstEntry.config(fg = 'black')
-def authorFirstOnFocusOut(event):
-    if authorFirstEntry.get() == '':
-        authorFirstEntry.insert(0, 'First Name')
-        authorFirstEntry.config(fg = 'grey')
-
+#Binds
 authorFirstEntry.bind('<FocusIn>', authorFirstOnEntryClick)
 authorFirstEntry.bind('<FocusOut>', authorFirstOnFocusOut)
 
-#Middle Initial
+#Middle Initial____________________________________________________________________________________________________________
 authorMiddleTextVar = StringVar()
 authorMiddleTextVar.set("M.I.")
 authorMiddleEntry = Entry(master, textvariable=authorMiddleTextVar, fg = 'grey', width = 5)
-
-def authorMiddleOnEntryClick(event):
-    if authorMiddleEntry.get() == 'M.I.':
-       authorMiddleEntry.delete(0, "end") # delete all the text in the entry
-       authorMiddleEntry.insert(0, '') #Insert blank for user input
-       authorMiddleEntry.config(fg = 'black')
-def authorMiddleOnFocusOut(event):
-    if authorMiddleEntry.get() == '':
-        authorMiddleEntry.insert(0, 'M.I.')
-        authorMiddleEntry.config(fg = 'grey')
-
+#Binds
 authorMiddleEntry.bind('<FocusIn>', authorMiddleOnEntryClick)
 authorMiddleEntry.bind('<FocusOut>', authorMiddleOnFocusOut)
 
-#Last Name
+#Last Name_________________________________________________________________________________________________________________
 authorLastTextVar = StringVar()
 authorLastTextVar.set("Last Name")
 authorLastEntry = Entry(master, textvariable=authorLastTextVar, fg = 'grey', width = 39)#Weird Value so that the entry widgets line up together
-def authorLastOnEntryClick(event):
-    if authorLastEntry.get() == 'Last Name':
-       authorLastEntry.delete(0, "end") # delete all the text in the entry
-       authorLastEntry.insert(0, '') #Insert blank for user input
-       authorLastEntry.config(fg = 'black')
-def authorLastOnFocusOut(event):
-    if authorLastEntry.get() == '':
-        authorLastEntry.insert(0, 'Last Name')
-        authorLastEntry.config(fg = 'grey')
-
+#Binds
 authorLastEntry.bind('<FocusIn>', authorLastOnEntryClick)
 authorLastEntry.bind('<FocusOut>', authorLastOnFocusOut)
 
 
-#Website Title
+
+
+#Website Title_____________________________________________________________________________________________________________
 websiteTitleLabel = Label(master, text = "Website Title:")
 websiteTitleTextVar = StringVar()
 websiteTitleTextVar.set("Website Title")
 websiteTitleEntry = Entry(master, textvariable=websiteTitleTextVar, fg = 'grey', width = 70)
-
-def websiteTitleOnEntryClick(event):
-    if websiteTitleEntry.get() == 'Website Title':
-        websiteTitleEntry.delete(0, "end") # delete all the text in the entry
-        websiteTitleEntry.insert(0, '') #Insert blank for user input
-        websiteTitleEntry.config(fg = 'black')
-def websiteTitleOnFocusOut(event):
-    if websiteTitleEntry.get() == '':
-        websiteTitleEntry.insert(0, 'Website Title')
-        websiteTitleEntry.config(fg = 'grey')
-
+#Binds
 websiteTitleEntry.bind('<FocusIn>', websiteTitleOnEntryClick)
 websiteTitleEntry.bind('<FocusOut>', websiteTitleOnFocusOut)
 
-#Publisher/Sponser Information
+
+#Publisher/Sponser Information_____________________________________________________________________________________________
 publisherLabel = Label(master, text = "Publisher: ")
 publisherTextVar = StringVar()
 publisherTextVar.set("Publisher")
 publisherEntry = Entry(master, textvariable=publisherTextVar, fg = 'grey', width = 70)
-
-def publisherOnEntryClick(event):
-    if publisherEntry.get() == 'Publisher':
-        publisherEntry.delete(0, "end") # delete all the text in the entry
-        publisherEntry.insert(0, '') #Insert blank for user input
-        publisherEntry.config(fg = 'black')
-def publisherOnFocusOut(event):
-    if publisherEntry.get() == '':
-        publisherEntry.insert(0, 'Publisher')
-        publisherEntry.config(fg = 'grey')
-
+#Binds
 publisherEntry.bind('<FocusIn>', publisherOnEntryClick)
 publisherEntry.bind('<FocusOut>', publisherOnFocusOut)
 
-#Date Published Code
-#Month
+
+
+
+#Date Published Code_______________________________________________________________________________________________________
+
+#Month_____________________________________________________________________________________________________________________
 pDateLabel = Label(master, text = "Date Published:")
 pmonthTextVar = StringVar()
 pmonthTextVar.set("Month")
 pmonthEntry = Entry(master, textvariable=pmonthTextVar, fg = 'grey', width = 24)
-
-def pmonthOnEntryClick(event):
-    if pmonthEntry.get() == 'Month':
-       pmonthEntry.delete(0, "end") # delete all the text in the entry
-       pmonthEntry.insert(0, '') #Insert blank for user input
-       pmonthEntry.config(fg = 'black')
-def pmonthOnFocusOut(event):
-    if pmonthEntry.get() == '':
-        pmonthEntry.insert(0, 'Month')
-        pmonthEntry.config(fg = 'grey')
-
+#Binds
 pmonthEntry.bind('<FocusIn>', pmonthOnEntryClick)
 pmonthEntry.bind('<FocusOut>', pmonthOnFocusOut)
 
-#Day
+#Day_______________________________________________________________________________________________________________________
 pdayTextVar = StringVar()
 pdayTextVar.set("Day")
 pdayEntry = Entry(master, textvariable=pdayTextVar, fg = 'grey', width = 5)
-
-def pdayOnEntryClick(event):
-    if pdayEntry.get() == 'Day':
-       pdayEntry.delete(0, "end") # delete all the text in the entry
-       pdayEntry.insert(0, '') #Insert blank for user input
-       pdayEntry.config(fg = 'black')
-def pdayOnFocusOut(event):
-    if pdayEntry.get() == '':
-        pdayEntry.insert(0, 'Day')
-        pdayEntry.config(fg = 'grey')
-
+#Binds
 pdayEntry.bind('<FocusIn>', pdayOnEntryClick)
 pdayEntry.bind('<FocusOut>', pdayOnFocusOut)
 
-#Year
+#Year______________________________________________________________________________________________________________________
 pyearTextVar = StringVar()
 pyearTextVar.set("Year")
 pyearEntry = Entry(master, textvariable=pyearTextVar, fg = 'grey', width = 39)#Weird Value so that the entry widgets line up together
-
-def pyearOnEntryClick(event):
-    if pyearEntry.get() == 'Year':
-       pyearEntry.delete(0, "end") # delete all the text in the entry
-       pyearEntry.insert(0, '') #Insert blank for user input
-       pyearEntry.config(fg = 'black')
-def pyearOnFocusOut(event):
-    if pyearEntry.get() == '':
-        pyearEntry.insert(0, 'Year')
-        pyearEntry.config(fg = 'grey')
-
+#Binds
 pyearEntry.bind('<FocusIn>', pyearOnEntryClick)
 pyearEntry.bind('<FocusOut>', pyearOnFocusOut)
 
 
-#Date Accessed Code
-#Month
+
+
+#Date Accessed Code________________________________________________________________________________________________________
+
+#Month_____________________________________________________________________________________________________________________
 aDateLabel = Label(master, text = "Date Accessed:")
 amonthTextVar = StringVar()
 amonthTextVar.set("Month")
 amonthEntry = Entry(master, textvariable=amonthTextVar, fg = 'grey', width = 24)
-
-def amonthOnEntryClick(event):
-    if amonthEntry.get() == 'Month':
-       amonthEntry.delete(0, "end") # delete all the text in the entry
-       amonthEntry.insert(0, '') #Insert blank for user input
-       amonthEntry.config(fg = 'black')
-def amonthOnFocusOut(event):
-    if amonthEntry.get() == '':
-        amonthEntry.insert(0, 'Month')
-        amonthEntry.config(fg = 'grey')
-
+#Binds
 amonthEntry.bind('<FocusIn>', amonthOnEntryClick)
 amonthEntry.bind('<FocusOut>', amonthOnFocusOut)
 
-#Day
+#Day_______________________________________________________________________________________________________________________
 adayTextVar = StringVar()
 adayTextVar.set("Day")
 adayEntry = Entry(master, textvariable=adayTextVar, fg = 'grey', width = 5)
-
-def adayOnEntryClick(event):
-    if adayEntry.get() == 'Day':
-       adayEntry.delete(0, "end") # delete all the text in the entry
-       adayEntry.insert(0, '') #Insert blank for user input
-       adayEntry.config(fg = 'black')
-def adayOnFocusOut(event):
-    if adayEntry.get() == '':
-        adayEntry.insert(0, 'Day')
-        adayEntry.config(fg = 'grey')
-
+#Binds
 adayEntry.bind('<FocusIn>', adayOnEntryClick)
 adayEntry.bind('<FocusOut>', adayOnFocusOut)
 
-#Year
+#Year______________________________________________________________________________________________________________________
 ayearTextVar = StringVar()
 ayearTextVar.set("Year")
 ayearEntry = Entry(master, textvariable=ayearTextVar, fg = 'grey', width = 39)#Weird Value so that the entry widgets line up together
-
-def ayearOnEntryClick(event):
-    if ayearEntry.get() == 'Year':
-       ayearEntry.delete(0, "end") # delete all the text in the entry
-       ayearEntry.insert(0, '') #Insert blank for user input
-       ayearEntry.config(fg = 'black')
-def ayearOnFocusOut(event):
-    if ayearEntry.get() == '':
-        ayearEntry.insert(0, 'Year')
-        ayearEntry.config(fg = 'grey')
-
+#Binds
 ayearEntry.bind('<FocusIn>', ayearOnEntryClick)
 ayearEntry.bind('<FocusOut>', ayearOnFocusOut)
 
-#URL Information
+#URL Information____________________________________________________________________________________________________________
 URLLabel = Label(master, text = "URL: ")
 URLTextVar = StringVar()
 URLTextVar.set("URL")
 URLEntry = Entry(master, textvariable=URLTextVar, fg = 'grey', width = 70)
-
-def URLOnEntryClick(event):
-    if URLEntry.get() == 'URL':
-        URLEntry.delete(0, "end") # delete all the text in the entry
-        URLEntry.insert(0, '') #Insert blank for user input
-        URLEntry.config(fg = 'black')
-def URLOnFocusOut(event):
-    if URLEntry.get() == '':
-        URLEntry.insert(0, 'URL')
-        URLEntry.config(fg = 'grey')
-
+#Binds
 URLEntry.bind('<FocusIn>', URLOnEntryClick)
 URLEntry.bind('<FocusOut>', URLOnFocusOut)
+#___________________________________________________________________________________________________________________________
 
 
 
-#bibFormat and typeFormat
+#General Book Information___________________________________________________________________________________________________
 
-#Stuff that needs declaration:
-#Book
+#Book_______________________________________________________________________________________________________________________
 bookTitleLabel = Label(master, text = "Book Title:")
 bookTextVar = StringVar()
 bookTextVar.set("Book Title")
 bookEntry = Entry(master, textvariable = bookTextVar, fg = "grey", width = 70)
-
-def bookOnEntryClick(event):
-    if bookEntry.get() == 'Book Title':
-       bookEntry.delete(0, "end") # delete all the text in the entry
-       bookEntry.insert(0, '') #Insert blank for user input
-       bookEntry.config(fg = 'black')
-def bookOnFocusOut(event):
-    if bookEntry.get() == '':
-        bookEntry.insert(0, 'Book Title')
-        bookEntry.config(fg = 'grey')
-
+#Binds
 bookEntry.bind('<FocusIn>', bookOnEntryClick)
 bookEntry.bind('<FocusOut>', bookOnFocusOut)
 
-
-#Location of Publication (City)
+#Location of Publication (City)_____________________________________________________________________________________________
 blocationLabel = Label(master, text = "City:")
 blocationTextVar = StringVar()
 blocationTextVar.set("City the book was published in")
 blocationEntry = Entry(master, textvariable = blocationTextVar, fg = "grey", width = 70)
-
-def blocationOnEntryClick(event):
-    if blocationEntry.get() == 'City the book was published in':
-       blocationEntry.delete(0, "end") # delete all the text in the entry
-       blocationEntry.insert(0, '') #Insert blank for user input
-       blocationEntry.config(fg = 'black')
-def blocationOnFocusOut(event):
-    if blocationEntry.get() == '':
-        blocationEntry.insert(0, 'City the book was published in')
-        blocationEntry.config(fg = 'grey')
-
+#Binds
 blocationEntry.bind('<FocusIn>', blocationOnEntryClick)
 blocationEntry.bind('<FocusOut>', blocationOnFocusOut)
 
-#MLA Year of Publication
+#MLA Year of Publication___________________________________________________________________________________________________
 mlabookpyearLabel = Label(master, text = "Year:")
 mlabookpyearTextVar = StringVar()
 mlabookpyearTextVar.set("Year")
 mlabookpyearEntry = Entry(master, textvariable=mlabookpyearTextVar, fg = 'grey', width = 70)
-
-def mlabookpyearOnEntryClick(event):
-    if mlabookpyearEntry.get() == 'Year':
-       mlabookpyearEntry.delete(0, "end") # delete all the text in the entry
-       mlabookpyearEntry.insert(0, '') #Insert blank for user input
-       mlabookpyearEntry.config(fg = 'black')
-def mlabookpyearOnFocusOut(event):
-    if mlabookpyearEntry.get() == '':
-        mlabookpyearEntry.insert(0, 'Year')
-        mlabookpyearEntry.config(fg = 'grey')
-
+#Binds
 mlabookpyearEntry.bind('<FocusIn>', mlabookpyearOnEntryClick)
 mlabookpyearEntry.bind('<FocusOut>', mlabookpyearOnFocusOut)
 
-#Location of Publication (State)
+#Location of Publication (State)___________________________________________________________________________________________
 statelocationLabel = Label(master, text = "State:")
 statelocationTextVar = StringVar()
 statelocationTextVar.set("State the book was published in")
 statelocationEntry = Entry(master, textvariable = statelocationTextVar, fg = "grey", width = 70)
-
-def statelocationOnEntryClick(event):
-    if statelocationEntry.get() == 'State the book was published in':
-       statelocationEntry.delete(0, "end") # delete all the text in the entry
-       statelocationEntry.insert(0, '') #Insert blank for user input
-       statelocationEntry.config(fg = 'black')
-def statelocationOnFocusOut(event):
-    if statelocationEntry.get() == '':
-        statelocationEntry.insert(0, 'State the book was published in')
-        statelocationEntry.config(fg = 'grey')
-
+#Binds
 statelocationEntry.bind('<FocusIn>', statelocationOnEntryClick)
 statelocationEntry.bind('<FocusOut>', statelocationOnFocusOut)
 
-#Cite Button
+
+
+#Cite Button_______________________________________________________________________________________________________________
 citeButton = Button(master, text = "Cite It!")
 citeButton.place(x = 15, y =350)
-
-def citeButtonFunction(event):
-    print ("Cite it")
-
-    clearFunction()
-
-    if(bibFormat.cget('text') == "MLA8"):
-        if(typeFormat.cget('text') == "Website"):
-            mlaWebsitePlaceFunction()
-        else:
-            mlaBookPlaceFunction()
-    elif(bibFormat.cget('text') == "APA"):
-        if(typeFormat.cget('text') == "Website"):
-            apaWebsitePlaceFunction()
-        else:
-            apaBookPlaceFunction()
-
+#Bind
 citeButton.bind('<Button-1>', citeButtonFunction)
 
 
