@@ -8,49 +8,8 @@ master.iconbitmap("Apple.ico")#Icon Picture
 
 #Gap between the entry widgets is 25 pixels
 
-#FIRST LEVEL STUFF
 
-questionForFormat = Label(master, text = "How do you want to format the bibliography? ")
-questionForFormat.place(x=10,y=10)
-
-mlaButton = Button(master, text = "MLA8")
-mlaButton.place(x = 15, y = 35)
-
-apaButton = Button(master, text = "APA")
-apaButton.place(x = 65, y = 35)
-
-#chicagoButton = Button(master, text = "Chicago")
-#chicagoButton.place(x=105, y = 35)
-
-bibSaying = Label(master, text = "Type of Bibliography: ")
-bibSaying.place(x=15, y=70)
-
-bibType = Label(master, text="MLA8")
-bibType.place(x= 135, y=70)
-
-questionForBibType = Label(master, text = "What type of bibliography do you want to make? ")
-questionForBibType.place(x = 300, y = 10)
-
-websiteButton = Button(master, text = "Website")
-websiteButton.place(x = 300, y = 35)
-
-bookButton = Button(master, text = "Book")
-bookButton.place(x = 360, y = 35)
-
-#videoButton = Button(master, text = "Video")
-#videoButton.place(x = 404, y = 35)
-
-#journalButton = Button(master, text = "Journal")
-#journalButton.place(x = 450, y = 35)
-
-typeSaying = Label(master, text = "Type of Format: ")
-typeSaying.place(x = 300, y = 70)
-
-typeFormat = Label(master, text = "Website")
-typeFormat.place(x = 390, y = 70)#Check if this is a good value for x
-
-
-#Functions
+#Functions_________________________________________________________________________________________________________________
 
 def clearFunction():
     #Article
@@ -93,7 +52,7 @@ def clearFunction():
     statelocationEntry.place_forget()
     statelocationLabel.place_forget()
 
-#Place Functions
+#Place Functions___________________________________________________________________________________________________________
 
 #Website Place Functions
 def mlaWebsitePlaceFunction():
@@ -198,7 +157,7 @@ def apaBookPlaceFunction():
 #     mlabookpyearEntry.place(x=105, y=225)
 
 
-#Button Functions
+#Button Functions__________________________________________________________________________________________________________
 def mlaButtonFunction(event):
     bibType.configure(text = "MLA8")
     clearFunction()
@@ -298,7 +257,7 @@ def bookButtonFunction(event):
 
 #Format Binds
 
-#Bind Functions
+#Bind Functions____________________________________________________________________________________________________________
 
 def articleOnEntryClick(event):
     if articleEntry.get() == 'Article Title':
@@ -499,6 +458,52 @@ def citeButtonFunction(event):
 
 
 
+#Places the Buttons and Labels that never move_____________________________________________________________________________
+
+questionForFormat = Label(master, text = "How do you want to format the bibliography? ")
+questionForFormat.place(x=10,y=10)
+
+mlaButton = Button(master, text = "MLA8")
+mlaButton.place(x = 15, y = 35)
+
+apaButton = Button(master, text = "APA")
+apaButton.place(x = 65, y = 35)
+
+#chicagoButton = Button(master, text = "Chicago")
+#chicagoButton.place(x=105, y = 35)
+
+bibSaying = Label(master, text = "Type of Bibliography: ")
+bibSaying.place(x=15, y=70)
+
+bibType = Label(master, text="MLA8")
+bibType.place(x= 135, y=70)
+
+questionForBibType = Label(master, text = "What type of bibliography do you want to make? ")
+questionForBibType.place(x = 300, y = 10)
+
+websiteButton = Button(master, text = "Website")
+websiteButton.place(x = 300, y = 35)
+
+bookButton = Button(master, text = "Book")
+bookButton.place(x = 360, y = 35)
+
+#videoButton = Button(master, text = "Video")
+#videoButton.place(x = 404, y = 35)
+
+#journalButton = Button(master, text = "Journal")
+#journalButton.place(x = 450, y = 35)
+
+typeSaying = Label(master, text = "Type of Format: ")
+typeSaying.place(x = 300, y = 70)
+
+typeFormat = Label(master, text = "Website")
+typeFormat.place(x = 390, y = 70)
+
+
+
+
+
+#Core Button Binds_________________________________________________________________________________________________________
 
 mlaButton.bind('<Button-1>', mlaButtonFunction)
 apaButton.bind('<Button-1>', apaButtonFunction)
@@ -508,9 +513,11 @@ apaButton.bind('<Button-1>', apaButtonFunction)
 websiteButton.bind('<Button-1>', websiteButtonFunction)
 bookButton.bind('<Button-1>', bookButtonFunction)
 #videoButton.bind('<Button-1>', videoButtonFunction)
-#journalButton.bind('<Button-1>', journalButtonFunction)
+#journalButton.bind('<Button-1>', journalButtonFunction
 
-#ENTRY CODE FOR MLA WEBSITE
+
+
+
 
 #Article Entry Code________________________________________________________________________________________________________
 articleTitleLabel = Label(master, text = "Article Title: ")
