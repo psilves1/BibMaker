@@ -53,12 +53,16 @@ def clearFunction():
     #Book Location State
     statelocationEntry.place_forget()
     statelocationLabel.place_forget()
+
     clearLastWidget()
 
 
 def clearLastWidget():
-    e = master.focus_get()
-    e.delete(0, END)
+    try:
+        e = master.focus_get()
+        e.delete(0, END)
+    except AttributeError:#This error will occur if the user hits "Cite it" wihtout having a widget selected
+        pass
 
 #Place Functions___________________________________________________________________________________________________________
 
