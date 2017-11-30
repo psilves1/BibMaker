@@ -504,19 +504,48 @@ def statelocationOnFocusOut(event):
 def citeButtonFunction(event):
     print ("Cite it")
 
+    if (bibType.cget('text') == "MLA8"):
+        if (typeFormat.cget('text') == "Website"):
+            mlaWebsiteGetData()
+        else:
+            pass
+    elif (bibType.cget('text') == "APA"):
+        if (typeFormat.cget('text') == "Website"):
+            pass
+        else:
+            pass
+
+
+
+
+
+
+def mlaWebsiteGetData():
+
+    articleInfo = articleEntry.get()
+
+    authorFirstInfo = authorFirstEntry.cget('text')
+    authorMiddleInfo = authorMiddleEntry.cget('text')
+    authorLastInfo = authorLastEntry.cget('text')
+    websiteInfo = websiteTitleEntry.cget('text')
+    publisherInfo = publisherEntry.cget('text')
+    pmonthInfo = pmonthEntry.cget('text')
+    pdayInfo = pdayEntry.cget('text')
+    pyearInfo = pyearEntry.cget('text')
+    amonthInfo = amonthEntry.cget('text')
+    adayInfo = adayEntry.cget('text')
+    ayearInfo = ayearEntry.cget('text')
+    URLInfo = URLEntry.cget('text')
+
+    infoWindow = Tk()
+    infoWindow.geometry("400x500")
+    articleInfoLabel = Label(infoWindow, text = articleInfo)
+    articleInfoLabel.place(x = 10, y = 10)
+
     clearFunction()
+    mlaWebsitePlaceFunction() #Places new empty Entry Widgets
 
-    if(bibType.cget('text') == "MLA8"):
-        if(typeFormat.cget('text') == "Website"):
-            mlaWebsitePlaceFunction()
-        else:
-            mlaBookPlaceFunction()
-    elif(bibType.cget('text') == "APA"):
-        if(typeFormat.cget('text') == "Website"):
-            apaWebsitePlaceFunction()
-        else:
-            apaBookPlaceFunction()
-
+    infoWindow.mainloop()
 
 
 
