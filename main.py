@@ -523,24 +523,29 @@ def citeButtonFunction(event):
 def mlaWebsiteGetData():
 
     articleInfo = articleEntry.get()
+    authorFirstInfo = authorFirstEntry.get()
+    authorMiddleInfo = authorMiddleEntry.get()
+    authorLastInfo = authorLastEntry.get()
+    websiteInfo = websiteTitleEntry.get()
+    publisherInfo = publisherEntry.get()
+    pmonthInfo = pmonthEntry.get()
+    pdayInfo = pdayEntry.get()
+    pyearInfo = pyearEntry.get()
+    amonthInfo = amonthEntry.get()
+    adayInfo = adayEntry.get()
+    ayearInfo = ayearEntry.get()
+    URLInfo = URLEntry.get()
 
-    authorFirstInfo = authorFirstEntry.cget('text')
-    authorMiddleInfo = authorMiddleEntry.cget('text')
-    authorLastInfo = authorLastEntry.cget('text')
-    websiteInfo = websiteTitleEntry.cget('text')
-    publisherInfo = publisherEntry.cget('text')
-    pmonthInfo = pmonthEntry.cget('text')
-    pdayInfo = pdayEntry.cget('text')
-    pyearInfo = pyearEntry.cget('text')
-    amonthInfo = amonthEntry.cget('text')
-    adayInfo = adayEntry.cget('text')
-    ayearInfo = ayearEntry.cget('text')
-    URLInfo = URLEntry.cget('text')
+
 
     infoWindow = Tk()
-    infoWindow.geometry("400x500")
-    articleInfoLabel = Label(infoWindow, text = articleInfo)
-    articleInfoLabel.place(x = 10, y = 10)
+    infoWindow.geometry("400x300")
+
+    finalOutPut = articleInfo + authorFirstInfo #Need to manually add spaces
+
+    finalLabel = Label(infoWindow, text=finalOutPut)
+    finalLabel.place(x=10, y=10)
+
 
     clearFunction()
     mlaWebsitePlaceFunction() #Places new empty Entry Widgets
