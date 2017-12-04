@@ -132,12 +132,8 @@ def mlaWebsitePlaceFunction():
     pmonthEntry.place(x=105, y=225)
     pdayEntry.place(x=255, y=225)
     pyearEntry.place(x=290, y=225)
-    aDateLabel.place(x=15, y=250)
-    amonthEntry.place(x=105, y=250)
-    adayEntry.place(x=255, y=250)
-    ayearEntry.place(x=290, y=250)
-    URLLabel.place(x=15, y=275)
-    URLEntry.place(x=105, y=275)
+    URLLabel.place(x=15, y=250)
+    URLEntry.place(x=105, y=250)
 
 def apaWebsitePlaceFunction():
     articleTitleLabel.place(x=15, y=125)
@@ -541,7 +537,7 @@ def mlaWebsiteGetData():
     infoWindow = Tk()
     infoWindow.geometry("400x300")
 
-    finalOutPut = articleInfo + authorFirstInfo #Need to manually add spaces
+    finalOutPut = authorLastInfo + ", " + authorFirstInfo + " " + authorMiddleInfo + "." + '"' + articleInfo + '."' + websiteInfo + ". " + publisherInfo + ", " + pdayInfo + " " + pmonthInfo + " " + pyearInfo
 
     finalLabel = Label(infoWindow, text=finalOutPut)
     finalLabel.place(x=10, y=10)
